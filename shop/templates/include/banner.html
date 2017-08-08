@@ -1,0 +1,12 @@
+{% load staticfiles %}
+<!--banner 开始-->
+<section>
+    {% for ad in ad_list %}
+    <div class="#">
+    <img src="{% static ad.img_url.url %} ">
+        <a href="#">
+        </a>
+    </div>
+    {% endfor %}
+</section>
+<!--banner 结束-->

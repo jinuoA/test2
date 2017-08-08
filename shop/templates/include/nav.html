@@ -1,0 +1,17 @@
+{% load staticfiles %}
+<!--第二级头部导航栏 开始-->
+<section class="second-header-nav">
+    <div class="wrap">
+
+       <ul class="subnav-container">
+           {% for nav in nav_list %}
+           <li><a href="{% url 'phone' nav.id %}">
+                <i class="{{ nav.style }}"></i>
+               <span>{{ nav.TagName }}</span>
+           </a></li>
+          {% endfor %}
+       </ul>
+
+    </div>
+</section>
+<!--第二级头部导航栏 结束-->

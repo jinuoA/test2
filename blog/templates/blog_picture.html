@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load myfilter %}
+{% block content %}
+<div class="filter" id="filter"></div>
+<!--banner-->
+<div class="banner banner-picture">
+    <h2>STAR-PHONE<br>PICTURE</h2>
+</div>
+{% include 'include/sub_nav.html' %}
+
+<!--main-->
+<div class="tab-page">
+    <div class="page-container">
+        <div class="picture-inner">
+            <div class="picture-cell">
+                <h3>X5手机系列</h3>
+                <ul class="clearfix">
+                    {% for propic in proPic_list %}
+                        {% if  propic.id|product1 %}
+                    <li><a href="{% url 'picture_details' propic.id %}"><img src="{% static propic.img_url.url %}" alt="">
+                        <p class="picture-desc">{{ propic.name }}</p></a></li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="picture-cell">
+                <h3>X3手机系列</h3>
+                <ul class="clearfix">
+                    {% for propic in proPic_list %}
+                        {% if  propic.id|product2  %}
+                    <li><a href=""><img src="{% static propic.img_url.url %}" alt="">
+                        <p class="picture-desc">{{ propic.name }}</p></a></li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="picture-cell">
+                <h3>X3T手机系列</h3>
+                <ul class="clearfix">
+                    {% for propic in proPic_list %}
+                        {% if propic.id > 3 %}
+                    <li><a href=""><img src="{% static propic.img_url.url %}" alt="">
+                        <p class="picture-desc">{{ propic.name }}</p></a></li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+{% include 'include/nav.html' %}
+<!--banner 开始-->
+<section>
+    <div class="banner">
+        <a href="{% url 'OnePlus5' %}">
+{#            <img src="{% static 'images/store/OnePlus5Shopbanner0704-large.jpg' %}" alt="">#}
+        </a>
+    </div>
+</section>
+<!--banner 结束-->
+<!--主体第二部分商品展示 开始-->
+<section class="wrap">
+    <ul class="hero-goods-wrap">
+        {% for good in good_lsit %}
+        <li>
+            <a href="{% url 'product_details' good.id %}">
+                <img src="{% static good.saleImg.url %}" alt="">
+            </a>
+        </li>
+        <li>
+        {% endfor %}
+    </ul>
+</section>
+<!--主体第二部分商品展示 结束-->
+<!--主体第三部分商品展示 开始-->
+<section class="goods-content">
+    <div class="wrap">
+        <!--oneplus5热销产品 开始-->
+        <div class="hot-sell">
+            <h2>OnePlus 5 热销配件</h2>
+            <ul class="goods-list">
+                {% for Oneplus in Oneplus_list %}
+                <li>
+                    <a href="{% url 'product_details' Oneplus.id %}">
+                        <img src="{% static Oneplus.saleImg.url %}" alt="">
+                        <h3>{{ Oneplus.saleDese }}</h3>
+                        <p class="price">¥ {{ Oneplus.salePrice }}</p>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <!--oneplus5热销产品 结束-->
+        <!--super生活周边 开始-->
+        <div class="life-rim">
+            <h2>一加生活周边</h2>
+            <ul class="goods-list">
+                {% for rim in rim_list %}
+                <li>
+                    <a href="{% url 'product_details' rim.id %}">
+                        <img src="{% static rim.saleImg.url %}" alt="">
+                        <h3>{{ rim.saleDese }}</h3>
+                        <p class="price">¥ {{ rim.salePrice }}</p>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <!--super生活周边 结束-->
+    </div>
+</section>
+<!--主体第三部分商品展示 结束-->
+<!--第四部分主体 开始-->
+{% include  'include/foolter.html' %}
+<!--第四部分主体 结束-->
+{% endblock %}

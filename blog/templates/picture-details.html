@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+<!--main-->
+<div class="tab-page">
+    <div class="page-container">
+        <div class="picture-inner">
+            <!--product title-->
+            <div class="product-title">
+                {% for pic in picture2_list %}
+                <div class="product-title-img">
+                    <img src="{% static pic.img2_url.url %}" alt="star-phone">
+                </div>
+                <div class="product-title-content">
+                    <h1>{{ pic.name }}</h1>
+                    <p class="product-title-content-desc">{{ pic.phone }}</p>
+                    <a href="">查看详情</a>
+                </div>
+                {% endfor %}
+            </div>
+            <!--product show-->
+            <div class="product-picbox">
+                <h3>图片下载</h3>
+
+                <ul class="product-picbox-inner">
+                    {% for pict in picture_imgs %}
+                    <li><a href=""><img src="{% static pict.img2_url.url %}" alt=""></a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

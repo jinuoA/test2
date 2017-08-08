@@ -1,0 +1,191 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load myfilter %}
+{% block content %}
+<div class="filter" id="filter"></div><!--滤镜-->
+<!--立即购买 开始-->
+<section class="selection">
+    <div class="wild-box flex-box">
+        <div class="leftbox">
+            {% for pro in pro_color %}
+            <div class="left-imgshow">
+                <div class="big-img ">
+                    <a class="btnleft">
+                        <i class="iconfont icon-fanhui iconleft"></i>
+                    </a>
+                    <div class="pic">
+                        {% for pro in product_list %}
+{#                            {% if pro.id %}#}
+                        <img src="{% static pro.img_url.url %}" alt="" class="op1">
+{#                            {% else %}#}
+{#                        <img src="{% static pro.img_url.url %}" alt="">#}
+{#                            {% endif %}#}
+                        {% endfor %}
+                    </div>
+                    <a class="btnright">
+                        <i class="iconfont icon-gengduo iconright"></i>
+                    </a>
+                </div>
+                <div class="small-img ">
+                    {% for pro in product_list %}
+                    <a>
+                        <img src="{% static pro.small_img.url %}" alt="">
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+           {% endfor %}
+            {% for pro in product %}
+            <div class="left-imgshow dflex" id="normal-show">
+                <div class="big-img ">
+                    <div class="pic">
+                        <img src="{% static pro.img_url.url %}" alt="" class="op1">
+                    </div>
+                </div>
+                <div class="small-img ">
+                    <a>
+                        <img src="{% static pro.img_url.url %}" alt="">
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+        <div class="right-info">
+            {% for pro in product %}
+            <h1>{{ pro.title }}<span>{{ pro.color }}</span></h1>
+            <p class="info-subtitle"></p>
+            <div class="price">{{ pro.price }}</div>
+            <div class="option">
+                <dl>
+                    {% if not pro.color %}
+                        {% else %}
+                    <dt class="color-des"> 颜色 - <span>{{ pro.color }}</span></dt>
+                {% endif %}
+                    <dd class="color-choice" id="buynow">
+                        {% for pc in pro_color %}
+
+                                <a>
+                                <img src="{% static pc.color_img.url %}" alt="">
+                                </a>
+                        {% endfor %}
+                    </dd>
+                </dl>
+            </div>
+            {% endfor %}
+            <div class="btngroup clearfix">
+                <div class="btn">
+                    <a href="#" class="buynow">立即购买</a>
+                    <a href="#" class="arrival-notice">到货通知</a>
+                </div>
+                <dl class="share">
+                    <dt id="share">
+                        <i class="i-con i-shar"></i>
+                    </dt>
+                    <dd class="shareway" id="shareway">
+                        <a href="#"><i class="i-con i-qqzone"></i></a>
+                        <a href="#"><i class="i-con i-sina"></i></a>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</section>
+<!--菜单选择 开始-->
+<section class="menu" id="pro-menu">
+    <ul>
+        <li><a href="#dails">商品详情</a></li>
+        <li><a href="#parameter">规格参数</a></li>
+        <li><a href="#fag">常见问题</a></li>
+    </ul>
+</section>
+<!--商品详情 开始-->
+
+{% for prod in pro_list %}
+<a name="dails"></a>
+    {% if prod.sale.id|list %}
+    <img src="{% static prod.img_url.url %}">
+    {% else %}
+<a name="dails"></a>
+<section class="product-dails clearfix">
+
+    <div class="product-des">
+        {% for prod in pro_list %}
+        <h2>{{ prod.title }}</h2>
+        <p>{{ prod.desc }}
+        </p>
+        {% endfor %}
+    </div>
+    <div class="product-img">
+    </div>
+</section>
+
+<!--详情2 开始-->
+<section class="product-two">
+    <div class="swiper-btn">
+        <span class="color-choice active"></span>
+        <span class="color-choice "></span>
+        <span class="color-choice "></span>
+        <span class="color-choice "></span>
+    </div>
+    <div class="pro-two-box">
+        <div class="product-two-bg img-active">
+            <div class="product-des">
+               {% for prod in pro_list1 %}
+        <h2>{{ prod.title }}</h2>
+        <p>{{ prod.desc }}
+        </p>
+        {% endfor %}
+            </div>
+            <div class="product-pic pic1"></div>
+        </div>
+        <div class="product-two-bg">
+            <div class="product-des">
+                {% for prod in pro_list1 %}
+        <h2>{{ prod.title }}</h2>
+        <p>{{ prod.desc }}
+        </p>
+        {% endfor %}
+            </div>
+            <div class="product-pic pic2"></div>
+        </div>
+
+    </div>
+
+</section>
+<!--详情3 开始-->
+<section class="product-three clearfix">
+    <div class="img-show">
+        <ul class="clearfix" id="pro3-imgshow">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <div class="btn" id="btn">
+        <span class="active"></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</section>
+
+    {% endif %}
+    {% endfor %}
+
+
+
+<!--规格参数 开始-->
+<a name="parameter"></a>
+<section class="specification">
+    <table>
+        {% for arg in arg_list %}
+        <tr>
+            <td>{{ arg.title }}</td>
+            <td>{{ arg.desc }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</section>
+{% include 'include/prob.html' %}
+{% endblock %}

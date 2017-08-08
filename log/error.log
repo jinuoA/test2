@@ -1,0 +1,5 @@
+2017-08-04 13:30:14,228 [Thread-72:140003787142912] [blog.views:168] [views:comment_post] [ERROR]- 'user_img' is an invalid keyword argument for this function
+2017-08-04 13:30:20,933 [Thread-77:140003761964800] [blog.views:168] [views:comment_post] [ERROR]- 'user_img' is an invalid keyword argument for this function
+2017-08-04 13:31:54,468 [Thread-104:140003761964800] [blog.views:168] [views:comment_post] [ERROR]- 'user_img' is an invalid keyword argument for this function
+2017-08-04 13:32:34,945 [Thread-112:140003787142912] [blog.views:168] [views:comment_post] [ERROR]- 'user_img' is an invalid keyword argument for this function
+2017-08-04 13:32:43,190 [Thread-117:140003761964800] [blog.views:168] [views:comment_post] [ERROR]- 'user_img' is an invalid keyword argument for this function

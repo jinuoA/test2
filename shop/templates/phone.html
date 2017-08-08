@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+<div class="filter" id="filter"></div>
+    {% include 'include/nav.html' %}
+    {% include 'include/banner.html' %}
+<!--主体第三部分商品展示 开始-->
+<section class="goods-content">
+    <div class="wrap">
+        <!--oneplus5热销产品 开始-->
+        <div class="hot-sell">
+            <h2>OnePlus 5 热销配件</h2>
+            <ul class="goods-list">
+                {% for good in good_list %}
+                <li>
+                    <a href="{% url 'product_details' good.id %}">
+                        <img src="{% static good.goodImg.url %}" alt="">
+                        <h3>{{ good.goodName }}</h3>
+                        <p class="price">¥ {{ good.goodPrice }}</p>
+                    </a>
+
+                </li>
+                {% endfor %}
+
+            </ul>
+        </div>
+        <!--oneplus5热销产品 结束-->
+    </div>
+</section>
+<!--主体第三部分商品展示 结束-->
+{% endblock %}

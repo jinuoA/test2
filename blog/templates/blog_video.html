@@ -1,0 +1,38 @@
+
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+<div class="filter" id="filter"></div>
+<!--banner-->
+<div class="banner banner-video">
+    <h2>STAR-PHONE<br>VIDEO</h2>
+</div>
+{% include 'include/sub_nav.html' %}
+
+<!--main-->
+<div class="tab-page">
+    <div class="page-container">
+        <ul class="video-inner">
+            {% for vid in video_list %}
+                {% if vid.id < 2 %}
+            <li class="video-big"><a href="{% url 'video' vid.id %}">
+
+                <img src="{% static vid.img_url.url %}" alt="">
+
+                <p class="video-desc">Star-Phone 发布会</p></a></li>
+                {% endif %}
+        {% endfor %}
+            <li class="video-small">
+                <ul>
+                    {% for vid in video_list %}
+                        {% if  vid.id > 2 %}
+                    <li><a href="{% url 'video' vid.id%}"><img src="{% static vid.img_url.url %}" alt="">
+                        <p class="video-desc">Star-Phone 产品视频</p></a></li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
